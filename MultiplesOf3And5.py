@@ -4,13 +4,12 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 """
 
 #kind of a lame way to do it
-"""sum = 0
+"""_sum = 0
 for number in range(1000):
     if number % 5 == 0 or number % 3 == 0:
         sum += number 
-        print number
 
-print sum"""
+print _sum"""
 
 
 #kind of a cool way to do it.
