@@ -18,7 +18,7 @@ def getPrimeNumbersInRange(_range):
 def getLargestPrimeFactor(num):
     #first get all the primes in range of num, reversed
     tStart = time.time()
-    primeList = reversed(getPrimeNumbersInRange(num))
+    primeList = reversed(getPrimeNumbersInRange(int(math.sqrt(num))))
     print "it took", time.time() - tStart, " seconds to build the list"
     #find largest prime that divides it. 
     for prime in primeList:
@@ -26,4 +26,15 @@ def getLargestPrimeFactor(num):
         if num % prime == 0:
             return prime
 
+def getLargestPrimeFactorOLD(num):
+    #first get all the primes in range of num, reversed
+    tStart = time.time()
+    primeList = reversed(getPrimeNumbersInRange((num)))
+    print "it took", time.time() - tStart, " seconds to build the list"
+    #find largest prime that divides it. 
+    for prime in primeList:
+        #print "dividing", num, "with", prime
+        if num % prime == 0:
+            return prime
+#print getLargestPrimeFactor(600851475143)
 print getLargestPrimeFactor(600851475143)
