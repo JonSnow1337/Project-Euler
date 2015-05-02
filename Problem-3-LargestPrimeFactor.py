@@ -1,3 +1,16 @@
+"""The prime factors of 13195 are 5, 7, 13 and 29.
+
+What is the largest prime factor of the number 600851475143 ?
+
+"""
+
+"""
+Explenation:
+First we get all the prime numbers in range of 2 to the number we're looking for.
+Then we try to divide the number with all the primes, starting from the largest one.
+When we find the number that divides it evenly, thats the largest prime
+
+"""
 import time
 import math
 def isPrime(x):
@@ -26,15 +39,4 @@ def getLargestPrimeFactor(num):
         if num % prime == 0:
             return prime
 
-def getLargestPrimeFactorOLD(num):
-    #first get all the primes in range of num, reversed
-    tStart = time.time()
-    primeList = reversed(getPrimeNumbersInRange((num)))
-    print "it took", time.time() - tStart, " seconds to build the list"
-    #find largest prime that divides it. 
-    for prime in primeList:
-        #print "dividing", num, "with", prime
-        if num % prime == 0:
-            return prime
-#print getLargestPrimeFactor(600851475143)
 print getLargestPrimeFactor(600851475143)
