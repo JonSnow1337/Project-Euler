@@ -1,3 +1,6 @@
+"""
+What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20X20 grid?
+"""
 import numpy 
 L = []
 L.append("08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08")
@@ -20,47 +23,71 @@ L.append("04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36")
 L.append("20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16")
 L.append("20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54")
 L.append("01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48")
-
+#remove out all the spaces from strings and build them as list
 L = [element.split(" ") for element in L]
 def largestProductInSeriesLeftRight(lst):
     product = 1
     greatestProduct = 1
     for i, element in enumerate(lst):
         for j,element2 in enumerate(lst[i]):
-            if j + 4 < 20:
+            if j + 4 <= 20:
                for num in lst[i][j : j + 4]:
                    product *= int(num)
                if product >= greatestProduct:
                     greatestProduct = product
-                    print lst[i][j : j + 4] 
-                    print i,j
                     product = 1 
                else: 
                     product = 1
 
+    return greatestProduct
+def largestProductInSeriesDiagonal(lst):
+    product = 1
+    greatestProduct = 1
+    for i, element in enumerate(lst):
+        for j,element2 in enumerate(lst[i]):
+            if i + 4 <= 20 and j + 4 <= 20:
+               #man thats gross
+               diagonalSplit =[lst[i][j], lst[i +1][j +1],lst[i +2][j+2],lst[i+3][j+3]]
+               for num in diagonalSplit:
+                   product *= int(num)
+               if product >= greatestProduct:
+                    greatestProduct = product
+                    product = 1 
+               else: 
+                    product = 1
+    return greatestProduct
 def largestProductInSeriesUpDown(lst):
-    numpyArray = numpy.array(lst)
+    #numpy allows me to split array by columns
+    #its probably easier to it without numpy
+    #oh well numpyArray = numpy.array(lst)
     product = 1
     greatestProduct = 1
     for i, element in enumerate(numpyArray):
         print "*" * 50
         for j,element2 in enumerate(numpyArray[i]):
             if i + 4 <= 20:
-               print "evaluating", numpyArray[i:i+4,j]
                for num in numpyArray[i:i +4,j]:
                    product *= int(num)
                if product >= greatestProduct:
                     greatestProduct = product
-                    print "found great product", numpyArray[i:i +4,j]
-                    print greatestProduct
                     product = 1
                else:
                     product = 1
-#reverse only rows in list
+    return greatestProduct
+#i have methods that check from right to left, or from up to down
+#but since problem asks for left to right and down to up too
+#i just reverse the rows or columns and chuck them in the same method
+numpyArray = numpy.array(L)
 LReversed = [row[::-1] for row in L]
+reversedColumnsNumpy = numpyArray[::-1, ]
 
-#largestProductInSeriesLeftRight(L)
-print "*" * 20
-#largestProductInSeriesLeftRight(LReversed)
-print "*" * 20
-largestProductInSeriesUpDown(L)
+#here all the greatest products in all directions are found
+productCandidates = []
+productCandidates.append(largestProductInSeriesLeftRight(L))
+productCandidates.append(largestProductInSeriesLeftRight(LReversed))
+productCandidates.append(largestProductInSeriesUpDown(L))
+productCandidates.append(largestProductInSeriesUpDown(reversedColumnsNumpy))
+productCandidates.append(largestProductInSeriesDiagonal(L))
+productCandidates.append(largestProductInSeriesDiagonal(LReversed))
+#lets just solve this problem already :)
+print max(productCandidates)
