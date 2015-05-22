@@ -30,14 +30,16 @@ def largestProductInSeriesLeftRight(lst):
     greatestProduct = 1
     for i, element in enumerate(lst):
         for j,element2 in enumerate(lst[i]):
-            if j + 4 <= 20:
-               for num in lst[i][j : j + 4]:
-                   product *= int(num)
-               if product >= greatestProduct:
-                    greatestProduct = product
-                    product = 1 
-               else: 
-                    product = 1
+            lengthValid = j + 4 <= 20
+            if not lengthValid:
+                continue
+            for num in lst[i][j : j + 4]:
+                product *= int(num)
+            if product >= greatestProduct:
+                 greatestProduct = product
+                 product = 1 
+            else: 
+                 product = 1
 
     return greatestProduct
 def largestProductInSeriesDiagonal(lst):
