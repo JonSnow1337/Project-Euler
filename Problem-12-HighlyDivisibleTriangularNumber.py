@@ -9,29 +9,42 @@ Let us list the factors of the first seven triangle numbers:
 
  1: 1
  3: 1,3
- 6: 1,2,3,6
-10: 1,2,5,10
-15: 1,3,5,15
-21: 1,3,7,21
-28: 1,2,4,7,14,28
+ 6: 1,2,3,6 
+ 10: 1,2,5,10 
+ 15: 1,3,5,15
+ 21: 1,3,7,21
+ 28: 1,2,4,7,14,28
+
 We can see that 28 is the first triangle number to have over five divisors.
 
 What is the value of the first triangle number to have over five hundred divisors?
-
 """
-def getTriangleNumbers(rng):
-    triangleNumber = 1 
-    #find the next triangle number by adding his index with previous triangle num
-    #returns generaor to iterate easily, makes more sense
-    for i in xrange(1, rng):
-        triangleNumber += i
-        yield i + triangleNumber
+import math
+
+def getTriangleNumbers():
+    triangleNumber = 0 
+    i = 0
+    #always add i counter to last triangle number and yield it
+    while True:
+       i += 1
+       triangleNumber +=  i 
+       yield triangleNumber
 
 def getNumberOfDivisors(num):
+    #checking for every number below sqrt of num
+    #there is an equal amount of divisors above sqrt 
+    #so we multiply by 2 at the end
     numOfDivisors = 0
-    for i in xrange(1, num + 1):
+    for i in xrange(1, int(math.sqrt(num + 1))):
         #explicit is better than implicit
         isDivisible = (num % i == 0)
         if isDivisible:
             numOfDivisors += 1
-    return numOfDivisors
+    return numOfDivisors  * 2
+
+if __name__ == "__main__":
+    for triangleNumber in getTriangleNumbers():
+        numOfDivisors = getNumberOfDivisors(triangleNumber)
+        if numOfDivisors > 500: 
+            print triangleNumber
+            break
