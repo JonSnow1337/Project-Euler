@@ -1,53 +1,57 @@
-r = [[[0,0]]]
-def getLeft(route):
-    lastPoint = route[-1]
-    #up row by one, column same
-    #print lastPoint[0] + 1, lastPoint[1]
-    return [lastPoint[0] + 1, lastPoint[1]]
+def getRight(s):
+    row = s[-2]
+    column = s[-1]
+    newrow = str(int(row) + 1)
+    newcolumn = str(int(column) + 1)
+    return newrow + newcolumn
+def getLeft(s):
+    row = s[-2]
+    column = s[-1]
+    newrow = str(int(row) + 1)
+    newcolumn = column 
+    return newrow + newcolumn
+"""jstart = "00"
+lst = []
+lst.append(start + getRight("00"))
+lst.append(start + getLeft("00"))
+print lst
 
-def appendLeft(route):
-    #print route
-    lastPoint = route[-1]
-    #up row by one, column same
-    #print lastPoint[0] + 1, lastPoint[1]
-    route.append([lastPoint[0] + 1, lastPoint[1]])
-    #print route
-    return route
+newlst = []
+for r in lst:
+    newlst.append(r + getRight(r))
+    newlst.append(r + getLeft(r))
 
-def getRight(route):
-    lastPoint = route[-1]
-    #up row by one, column by one 
-    #print lastPoint[0] + 1, lastPoint[1]  + 1 
-    return [lastPoint[0] + 1, lastPoint[1]  + 1 ]
+lst = newlst
+newlst = []
+print lst,newlst
+for r in lst:
+    newlst.append(r + getRight(r))
+    newlst.append(r + getLeft(r))
 
-def appendRight(route):
-    #print route
-    lastPoint = route[-1]
-    #up row by one, column by one 
-    #print lastPoint[0] + 1, lastPoint[1]  + 1 
-    route.append([lastPoint[0] + 1, lastPoint[1]  + 1 ])
-    #print route
-    return route
+lst = newlst
+newlst = []
+print lst,newlst
+for r in lst:
+    newlst.append(r + getRight(r))
+    newlst.append(r + getLeft(r))
 
+print len(newlst )
+"""
+def recu(depth): 
+    #when i wrote this only god and i knew what it meant
+    #now only god knows.
+    lst = [] 
+    newlst = []
+    for i in xrange(depth):
+        if i == 0:
+            lst.append("00" + getRight("00"))
+            lst.append("00" + getLeft("00"))
+        else:
+            newlst = []
+            for r in lst:
+                newlst.append(r + getRight(r))
+                newlst.append(r + getLeft(r))
+            lst = newlst
 
-x = [] 
-def buildRoutes(depth):
-    if depth == 0:
-        return [[0,0]]
-    else:
-        for i in range(depth):
-            r1 = appendRight(buildRoutes(depth -1))
-            r2 = appendLeft(buildRoutes(depth - 1))
-            print "r1"
-            print r1
-            print "r2"
-            print r2
-            print "r2 r1"
-            print r1 + r2
-            return r1 + r2
-
-x = buildRoutes(0)
-print x
-
-x = buildRoutes(3)
-print x
+    return lst
+print recu(14)
