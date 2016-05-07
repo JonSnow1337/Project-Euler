@@ -13,11 +13,7 @@ What is the total of all the name scores in the file?
 """
 def loadAlphabeticalValues():
     alphabet = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z".lower().replace(" ", "")
-    alphabeticalValue = {}
-    for i ,char in enumerate(alphabet):
-        alphabeticalValue[char] = i + 1
-
-    return alphabeticalValue
+    return {letter : i + 1 for i,letter in enumerate(alphabet)}
 
 def loadNames():
     with open("resources/p022_names.txt") as f:
