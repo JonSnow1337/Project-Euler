@@ -1,0 +1,46 @@
+"""A permutation is an ordered arrangement of objects. For example, 3124 is one possible permutation of the digits 1, 2,
+ 3 and 4. If all of the permutations are listed numerically or alphabetically, we call it lexicographic order.
+ The lexicographic permutations of 0, 1 and 2 are:
+012   021   102   120   201   210
+
+What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
+
+"""
+def getPermutations(items,newNum):
+    #append newnum inbetween all the elemnts in the lists and return the new list
+    #example items = [1,0],[0,1], newNum =2
+    #output = [[2,1,0], [1,2,0],[1,0,2],[2,0,1]] ..ect
+    newPerm =[]
+    for lst in items:
+        for i in xrange(len(lst) + 1):
+            copy = list(lst)
+            copy.insert(i,newNum)
+            newPerm.append(copy)
+
+    return newPerm
+
+permutations = [[0,1],[1,0]]
+for i in xrange(2,10):
+    permutations  = getPermutations(permutations,newNum=i)
+    print len(permutations)
+
+#sorting list
+#first i make another list with leading zeroes removed, then zip 2 of them,sort them, then unpack the original
+strippedPermutations = [] #permutations wiht leading 0 removed
+for perm in permutations:
+    strPerm = ""
+    for num in perm:
+        strPerm += str(num)
+        strPerm = strPerm.lstrip('0')
+    strippedPermutations.append(int(strPerm))
+#this basically sorts the one without leading zeros
+#then by the way that one was sorted the one with leading zeroes is sorted
+together = zip(permutations,strippedPermutations)
+together = sorted(together)
+permutations = [x[0] for x in together]
+
+print permutations[999999]
+
+
+
+
