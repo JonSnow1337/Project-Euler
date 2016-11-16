@@ -1,6 +1,3 @@
-
-<snippet>
-  <content>
 # Project-Euler
 
 ## Usage
@@ -20,6 +17,6 @@
 5. Submit a pull request :D
 
 
-
-></content>
-</snippet>
+## C++
+Some problems are solved in C++. Solutions are placed in the cpp folder.
+They were tested with GCC compiler.
