@@ -15,8 +15,16 @@
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
+6. Add your badge image to the readme file
 
+    ### Contributors on this project
+    
+    ![jedimaster93](https://projecteuler.net/profile/jedimaster93.png)
+    
+    ![mlogic1](https://projecteuler.net/profile/mlogic1.png)
 
 ## C++
 Some problems are solved in C++. Solutions are placed in the cpp folder.
 They were tested with GCC compiler.
+
+
