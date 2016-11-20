@@ -64,7 +64,7 @@ int main()
 
     }while(true);
 
-    cout<<"Done and found"<<endl;
+
     cout<<_sequence->size() - 1<<endl;
 
     return 0;
