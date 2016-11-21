@@ -43,10 +43,7 @@ int main()
 
     // run every combination (up, down, diagonal) and compare it to the biggest found product, once the biggest number is found, display it on the screen
 
-    // left to right
-    unsigned int temp;
-
-    //temp = grid[i][j] * grid[i][j-1] * grid[i][j-2] * grid[i][j-3];
+    unsigned int temp;  // used in loops
 
     // left to right
     for(int i=0;i<20;i++){
