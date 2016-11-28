@@ -18,11 +18,12 @@
 6. Add your badge image to the readme file
 
 
-    ### Contributors on this project
+## Contributors on this project
     
-    ![jedimaster93](https://projecteuler.net/profile/jedimaster93.png)
+![jedimaster93](https://projecteuler.net/profile/jedimaster93.png)
     
-    ![mlogic1](https://projecteuler.net/profile/mlogic1.png)
+![mlogic1](https://projecteuler.net/profile/mlogic1.png)
+
 
 ## C++
 Some problems are solved in C++. Solutions are placed in the cpp folder.
